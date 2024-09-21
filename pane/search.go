@@ -140,6 +140,8 @@ type SearchMatch struct {
 }
 
 func (t *Pane) locateText(chars [][]ecma48.StyledChar, text string) (SearchMatch, error) {
+	runewidth.DefaultCondition.EastAsianWidth = false
+
 	lineFromBottom := t.searchPos
 
 	i := len(chars) - t.searchPos - 1

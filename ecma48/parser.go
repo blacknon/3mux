@@ -216,6 +216,8 @@ func (p *Parser) anywhere(r rune) {
 }
 
 func (p *Parser) stateGround(r rune) {
+	runewidth.DefaultCondition.EastAsianWidth = false
+
 	switch {
 	case p.keyboardMode && (1 <= r && r <= 26):
 		p.out <- p.wrap(CtrlChar{Char: 'A' + (r - 1)})
